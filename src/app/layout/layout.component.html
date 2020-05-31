@@ -1,0 +1,12 @@
+<mat-sidenav-container class="grid grid-layout">
+    <app-header>
+    </app-header>
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
+        <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <main role="main" class="bg-secondary">
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
