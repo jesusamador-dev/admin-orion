@@ -1,6 +1,5 @@
 <div class="grid grid-rows-layout h-screen">
     <app-header [opened]="opened" (sidenav)="opened = $event" class="col-span-5"></app-header>
-
     <mat-sidenav-container class="w-screen">
         <mat-sidenav class="w-56" #sidenav mode="side" [(opened)]="opened">
             <app-sidebar></app-sidebar>
