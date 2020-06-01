@@ -1,5 +1,8 @@
 module.exports = {
-    purge: [],
+    purge: {
+        // enabled: true,
+        // content: ['./src/**/*.html'],
+    },
     target: 'relaxed',
     prefix: '',
     important: false,
@@ -16,8 +19,8 @@ module.exports = {
             current: 'currentColor',
             black: '#0f0d18',
             white: '#fff',
-            primary: '1e72fa',
-            secondary: 'f5f6fa',
+            primary: '#1e72fa',
+            secondary: '#f5f6fa',
             gray: {
                 100: '#f7fafc',
                 200: '#edf2f7',
@@ -454,6 +457,7 @@ module.exports = {
             '4': 'repeat(4, minmax(0, 1fr))',
             '5': 'repeat(5, minmax(0, 1fr))',
             '6': 'repeat(6, minmax(0, 1fr))',
+            'layout': 'auto 1fr'
         },
         gridRow: {
             auto: 'auto',

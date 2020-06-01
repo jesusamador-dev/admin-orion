@@ -1,12 +1,13 @@
-<mat-sidenav-container class="grid grid-layout">
-    <app-header>
-    </app-header>
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
-        <app-sidebar></app-sidebar>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <main role="main" class="bg-secondary">
+<div class="grid grid-rows-layout h-screen">
+    <app-header [opened]="opened" (sidenav)="opened = $event" class="col-span-5"></app-header>
+
+    <mat-sidenav-container class="w-screen">
+        <mat-sidenav class="w-56" #sidenav mode="side" [(opened)]="opened">
+            <app-sidebar></app-sidebar>
+        </mat-sidenav>
+
+        <mat-sidenav-content class="bg-secondary border-solid border-t border-l">
             <router-outlet></router-outlet>
-        </main>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
