@@ -44,8 +44,9 @@ export class LoginComponent implements OnInit {
       this.logging = true;
       this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
         (result) => {
-          if (result.success) {
-            this.router.navigate(['/dashboard']);
+          if (result.success === true) {
+            console.log('Amonos');
+            this.router.navigateByUrl('/departments');
           } else {
             this.errorsLogin = result.error;
           }
@@ -59,6 +60,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.controls.email.markAsTouched();
       this.loginForm.controls.password.markAsTouched();
     }
+
   }
 
   passwordInvalid() {
