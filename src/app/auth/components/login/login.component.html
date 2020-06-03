@@ -1,0 +1,59 @@
+<main class="flex flex-col h-screen w-screen items-center justify-center bg-secondary">
+    <!-- Row -->
+    <div class="w-full xl:w-3/4 lg:w-11/12 flex shadow-xl">
+        <!-- Col -->
+        <div class="w-full h-auto bg-white bg-center bg-auto bg-no-repeat hidden lg:block lg:w-1/2 rounded-l-lg" style="background-image: url('./../../../assets/imgs/login2.png')"></div>
+        <!-- Col -->
+        <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none border-l">
+            <h2 class="pt-4 text-3xl text-center" style="margin-bottom: 0;">
+                <span class="font-semibold text-3xl tracking-wider">
+                <span class="text-primary font-bold">O</span>rion
+                </span>
+            </h2>
+            <h3 class="text-2xl mb-0 text-center" style="margin-bottom: 0;">Bienvenido!</h3>
+            <form [formGroup]="loginForm" (ngSubmit)="login()" class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+                <div *ngIf="errorsLogin" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-2 mb-2" role="alert">
+                    <p style="margin-bottom: 0;">{{ errorsLogin }}</p>
+                </div>
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm text-gray-600" for="email">Email</label>
+                    <input type="email" formControlName="email" id="email" placeholder="Email" [ngClass]="{'border-red-500': emailInvalid()}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none" />
+                    <div *ngIf="emailInvalid()">
+                        <p *ngIf="loginForm.controls.email.errors.required" class="text-xs italic text-red-500">El email es requerido.</p>
+                        <p *ngIf="loginForm.controls.email.errors.minlength" class="text-xs italic text-red-500">Se necesitan al menos 4 caracteres.</p>
+                        <p *ngIf="loginForm.controls.email.errors.maxlength" class="text-xs italic text-red-500">Máximo 60 caracteres.</p>
+                    </div>
+                </div>
+                <div class="mb-4 ">
+                    <label class="block mb-2 text-sm text-gray-600" for="password">
+                      Contraseña
+                    </label>
+                    <input id="password" type="password" formControlName="password" placeholder="******" [ngClass]="{'border-red-500': passwordInvalid()}" class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none"
+                    />
+                    <div *ngIf="passwordInvalid()">
+                        <p *ngIf="loginForm.controls.password.errors.required" class="text-xs italic text-red-500">La contraseña es requerida.</p>
+                        <p *ngIf="loginForm.controls.password.errors.maxlength" class="text-xs italic text-red-500">Máximo 255 caracteres.</p>
+
+                    </div>
+                </div>
+
+                <div class="mb-6 text-center ">
+                    <button *ngIf="!logging" class="w-full px-4 py-2 text-white bg-primary rounded-full focus:outline-none focus:shadow-outline" type="submit">
+                      Entrar
+                    </button>
+                    <div *ngIf="logging" class="flex justify-center items-center w-full px-4 py-2 text-white bg-primary rounded-full focus:outline-none focus:shadow-outline">
+                        <span class="mr-2">Entrando</span>
+                        <div class="sk-chase">
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

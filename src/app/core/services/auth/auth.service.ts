@@ -1,0 +1,31 @@
+import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../models/user/user.model';
+import { tap } from 'rxjs/operators';
+import * as Cookies from 'js-cookie';
+
+const apiUrl = environment.api;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  constructor(private http: HttpClient) { }
+
+  login(email: string, password: string) {
+    return this.http.post<User>(`${apiUrl}auth/login`, {
+      email,
+      password
+    })
+      .pipe(
+        tap(res => this.setSession(res))
+      );
+  }
+
+  private setSession(authResult) {
+    Cookies.set('token', authResult.token);
+    localStorage.setItem('user', authResult.user);
+  }
+}
