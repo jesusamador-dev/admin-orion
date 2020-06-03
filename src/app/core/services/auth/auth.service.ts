@@ -24,7 +24,7 @@ export class AuthService {
       );
   }
 
-  private setSession(authResult) {
+  private setSession(authResult: any) {
     Cookies.set('token', authResult.token);
     localStorage.setItem('user', JSON.stringify(authResult.user));
   }
@@ -39,7 +39,7 @@ export class AuthService {
     return true;
   }
 
-  get user(): string {
+  getUser() {
     let user = localStorage.getItem('user');
     user = JSON.parse(user);
     return user;

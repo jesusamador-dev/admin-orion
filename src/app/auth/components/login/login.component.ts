@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
         (result) => {
           if (result.success === true) {
-            console.log('Amonos');
             this.router.navigateByUrl('/departments');
           } else {
             this.errorsLogin = result.error;

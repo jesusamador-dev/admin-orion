@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { CreateDepartmentComponent } from '../create-department/create-department.component';
 
 @Component({
   selector: 'app-departments-list',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepartmentsListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalCreateDepartment: MatBottomSheet) { }
 
   ngOnInit(): void {
   }
 
+  openFormDepartment(): void {
+    this.modalCreateDepartment.open(CreateDepartmentComponent);
+  }
 }

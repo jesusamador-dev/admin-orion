@@ -11,14 +11,12 @@ export class HeaderComponent implements OnInit {
 
   @Input() opened: boolean;
   @Output() sidenav = new EventEmitter<boolean>();
-  user: {
-    name: string
-  };
+  user: any;
 
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.user = this.auth.user;
+    this.user = this.auth.getUser();
   }
 
   changeSideNav(open: boolean) {
