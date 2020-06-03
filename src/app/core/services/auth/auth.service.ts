@@ -28,4 +28,8 @@ export class AuthService {
     Cookies.set('token', authResult.token);
     localStorage.setItem('user', authResult.user);
   }
+
+  get isLoggedIn(): boolean {
+    return (Cookies.get('token') !== undefined);
+  }
 }
