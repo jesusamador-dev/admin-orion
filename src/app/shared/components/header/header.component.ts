@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AuthService } from '../../../core/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +11,24 @@ export class HeaderComponent implements OnInit {
 
   @Input() opened: boolean;
   @Output() sidenav = new EventEmitter<boolean>();
+  user: {
+    name: string
+  };
 
-  constructor() { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.user = this.auth.user;
   }
 
   changeSideNav(open: boolean) {
     this.opened = open ? false : true;
     this.sidenav.emit(this.opened);
+  }
+
+  logOut() {
+    if (this.auth.logOut()) {
+      this.router.navigateByUrl('/login');
+    }
   }
 }

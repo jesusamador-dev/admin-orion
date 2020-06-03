@@ -11,12 +11,12 @@
     </div>
     <div class="flex flex-grow justify-end w-auto text-gray-600">
         <button mat-button [matMenuTriggerFor]="beforeMenu" class="inline-block focus:outline-none text-sm px-4 py-2 hover:text-primary hover:bg-white mt-4 lg:mt-0">
-          Usuario  <i class="fas fa-angle-down"></i>
+          {{user.name}}  <i class="fas fa-angle-down"></i>
         </button>
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="mt-2 w-36 bg-white rounded-lg shadow-xl text-gray-600">
             <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white"><i class="fas fa-user"></i> Perfil</a>
             <hr>
-            <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white"><i class="fas fa-sign-out-alt"></i> Salir</a>
+            <a href="#" (click)="logOut()" class="block px-4 py-2 hover:bg-primary hover:text-white"><i class="fas fa-sign-out-alt"></i> Salir</a>
         </mat-menu>
     </div>
 </header>

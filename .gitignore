@@ -4,6 +4,10 @@
 /dist
 /tmp
 /out-tsc
+#deploy firebase
+/.firebase
+.firebaserc
+firebase.json
 # Only exists if Bazel was run
 /bazel-out
 

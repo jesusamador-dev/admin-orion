@@ -26,10 +26,23 @@ export class AuthService {
 
   private setSession(authResult) {
     Cookies.set('token', authResult.token);
-    localStorage.setItem('user', authResult.user);
+    localStorage.setItem('user', JSON.stringify(authResult.user));
   }
 
   get isLoggedIn(): boolean {
     return (Cookies.get('token') !== undefined);
   }
+
+  logOut() {
+    Cookies.remove('token');
+    localStorage.removeItem('user');
+    return true;
+  }
+
+  get user(): string {
+    let user = localStorage.getItem('user');
+    user = JSON.parse(user);
+    return user;
+  }
+
 }
