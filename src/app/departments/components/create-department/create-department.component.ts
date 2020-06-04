@@ -76,6 +76,7 @@ export class CreateDepartmentComponent implements OnInit {
     config.duration = 2500;
     this.snackBar.open(message, 'Ok', config);
   }
+
   nameInvalid() {
     if (this.departmentForm.controls.name.invalid &&
       (this.departmentForm.controls.name.dirty ||

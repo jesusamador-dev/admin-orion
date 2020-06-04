@@ -34,9 +34,17 @@ export class AuthService {
   }
 
   logOut() {
+    this.http.post(`${apiUrl}auth/logout`, {});
     Cookies.remove('token');
     localStorage.removeItem('user');
     return true;
+  }
+
+  refreshToken() {
+    return this.http.post<User>(`${apiUrl}auth/refresh`, {})
+      .pipe(
+        tap(res => this.setSession(res))
+      );
   }
 
   getUser() {

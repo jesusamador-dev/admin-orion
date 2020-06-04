@@ -6,12 +6,14 @@ import { DepartmentsListComponent } from './components/departments-list/departme
 import { MaterialModule } from '../material/material.module';
 import { CreateDepartmentComponent } from './components/create-department/create-department.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteDepartmentComponent } from './components/delete-department/delete-department.component';
 
 
 @NgModule({
   declarations: [
     DepartmentsListComponent,
-    CreateDepartmentComponent
+    CreateDepartmentComponent,
+    DeleteDepartmentComponent
   ],
   imports: [
     CommonModule,

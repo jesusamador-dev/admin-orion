@@ -36,7 +36,7 @@
                     <button matRipple class="bg-white hover:bg-green-100 mr-1 text-green-600 font-normal focus:outline-none py-2 px-4 border border-green-400 rounded">
                       <i class="far fa-edit"></i>&nbsp;Editar
                     </button>
-                    <button matRipple class="bg-white hover:bg-red-100 ml-1 text-red-600 font-normal focus:outline-none py-2 px-4 border border-red-400 rounded">
+                    <button matRipple (click)="deleteDepartment(row.id, row.name)" class="bg-white hover:bg-red-100 ml-1 text-red-600 font-normal focus:outline-none py-2 px-4 border border-red-400 rounded">
                       <i class="far fa-trash-alt"></i>&nbsp;Eliminar
                     </button>
                 </td>

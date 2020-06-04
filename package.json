@@ -8,7 +8,8 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "prestart": "ngtw build"
+        "prestart": "ngtw build",
+        "deploy": "ngtw build && ng build && firebase deploy"
     },
     "private": true,
     "dependencies": {

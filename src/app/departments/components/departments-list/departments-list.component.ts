@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DepartmentData } from 'src/app/core/models/deparment-data/department-data.model';
+import { DeleteDepartmentComponent } from '../delete-department/delete-department.component';
 
 @Component({
   selector: 'app-departments-list',
@@ -22,7 +23,7 @@ export class DepartmentsListComponent implements OnInit {
 
   constructor(
     private departmentService: DepartmentService,
-    private modalCreateDepartment: MatBottomSheet) { }
+    private modalDepartment: MatBottomSheet) { }
 
   ngOnInit(): void {
     this.loadDepartments();
@@ -50,6 +51,15 @@ export class DepartmentsListComponent implements OnInit {
   }
 
   openFormDepartment(): void {
-    this.modalCreateDepartment.open(CreateDepartmentComponent);
+    this.modalDepartment.open(CreateDepartmentComponent);
+  }
+
+  deleteDepartment(id: number, name: string) {
+    this.modalDepartment.open(DeleteDepartmentComponent, {
+      data: {
+        id,
+        name
+      }
+    });
   }
 }

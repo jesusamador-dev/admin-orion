@@ -15,8 +15,8 @@ export class DepartmentService {
   constructor(private http: HttpClient) { }
 
 
-  getAll() {
-    return this.http.post<Department>(`${apiUrl}departments/get`, {})
+  getAll(status = 'activo') {
+    return this.http.post<Department>(`${apiUrl}departments/get/${status}`, {})
       .pipe(
         tap((res) => this.checkAuthorization)
       );
@@ -25,6 +25,13 @@ export class DepartmentService {
 
   create(data: any) {
     return this.http.post<Department>(`${apiUrl}departments/create`, data)
+      .pipe(
+        tap((res) => this.checkAuthorization)
+      );
+  }
+
+  delete(id: number) {
+    return this.http.post<Department>(`${apiUrl}departments/destroy/${id}`, {})
       .pipe(
         tap((res) => this.checkAuthorization)
       );

@@ -1,0 +1,36 @@
+<h3>Eliminando departamento</h3>
+<section class="flex flex-col">
+    <div *ngIf="errors" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-2 mb-2" role="alert">
+        <ul>
+            <li>
+                {{ errors }}
+            </li>
+            <li>
+                Para volver a iniciar sesión haga click <span (click)="refreshToken()" class="text-white" style="cursor: pointer;">aquí</span>.
+            </li>
+        </ul>
+    </div>
+    <h4 class="text-black">
+        Está a punto de eliminar el departamento <strong><em>{{ data.name }}</em></strong>, ¿desea continuar?.
+    </h4>
+
+    <div class="flex mb-6 justify-end">
+        <button (click)="delete(data.id)" *ngIf="!deleting" class="w-auto px-4 py-2 text-red-600 bg-white border border-red-300 rounded focus:outline-none focus:shadow-outline" type="button">
+            Si
+        </button>
+        <div *ngIf="deleting" class="flex justify-center items-center text-red-600 bg-white border border-red-300 w-auto px-4 py-2 rounded focus:outline-none focus:shadow-outline">
+            <span class="mr-2">Eliminando</span>
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
+        <button type="button" (click)="close()" class="w-auto px-4 py-2 ml-2 text-black bg-secondary rounded focus:outline-none focus:shadow-outline">
+            Cerrar
+        </button>
+    </div>
+</section>
