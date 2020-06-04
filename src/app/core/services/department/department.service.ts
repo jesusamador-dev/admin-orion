@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Department } from '../../models/department/department.model';
 import { DepartmentData } from '../../models/deparment-data/department-data.model';
+import { BehaviorSubject } from 'rxjs';
 
 const apiUrl = environment.api;
 
@@ -12,11 +13,16 @@ const apiUrl = environment.api;
 })
 export class DepartmentService {
 
+  departmentObservable = new BehaviorSubject({});
+  // public observable = this.departmentObservable.asObservable();
   constructor(private http: HttpClient) { }
 
+  next(data: {}) {
+    this.departmentObservable.next(data);
+  }
 
   getAll(status = 'activo') {
-    return this.http.post<Department>(`${apiUrl}departments/get/${status}`, {})
+    return this.http.get<Department>(`${apiUrl}departments/get/${status}`)
       .pipe(
         tap((res) => this.checkAuthorization)
       );

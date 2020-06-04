@@ -48,6 +48,7 @@ export class CreateDepartmentComponent implements OnInit {
           console.log(result);
           if (result.success === true) {
             this.showResponse(result.message);
+            this.departmentService.next({});
             this.departmentForm.reset();
             this.close();
           }

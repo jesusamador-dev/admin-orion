@@ -39,6 +39,7 @@ export class DeleteDepartmentComponent implements OnInit {
         console.log(result);
         if (result.success) {
           this.showResponse(result.message);
+          this.departmentService.next({});
           this.close();
         }
       },

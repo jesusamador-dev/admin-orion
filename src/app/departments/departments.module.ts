@@ -7,7 +7,7 @@ import { MaterialModule } from '../material/material.module';
 import { CreateDepartmentComponent } from './components/create-department/create-department.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteDepartmentComponent } from './components/delete-department/delete-department.component';
-
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { DeleteDepartmentComponent } from './components/delete-department/delete
     CommonModule,
     DepartmentsRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSkeletonLoaderModule
   ],
   entryComponents: [
     CreateDepartmentComponent
