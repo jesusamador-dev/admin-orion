@@ -13379,6 +13379,14 @@ video {
   }
 }
 
+.mat-simple-snackbar-action {
+  color: white!important;
+}
+
+.mat-simple-snackbar-action button:focus {
+  outline: none;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

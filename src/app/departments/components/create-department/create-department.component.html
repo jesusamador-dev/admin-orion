@@ -1,5 +1,12 @@
 <h3>Creando departamento</h3>
 <form [formGroup]="departmentForm" (ngSubmit)="createDepartment()">
+    <div *ngIf="errors" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-2 mb-2" role="alert">
+        <ul>
+            <li *ngFor="let item of errors?.name; let i=index">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
     <div class="mb-4">
         <label class="block mb-2 text-sm text-gray-600" for="name">Nombre</label>
         <input type="text" autocomplete="off" formControlName="name" id="name" placeholder="Nombre del departamento" [ngClass]="{'border-red-500': nameInvalid()}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none"

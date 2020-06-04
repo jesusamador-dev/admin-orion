@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DepartmentService } from '../../../core/services/department/department.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-department',
@@ -12,16 +13,20 @@ export class CreateDepartmentComponent implements OnInit {
 
   departmentForm: FormGroup;
   creating = false;
-
+  errors: any;
   constructor(
     private departmentService: DepartmentService,
+    private snackBar: MatSnackBar,
     private fb: FormBuilder,
+    private changeDetectorRef: ChangeDetectorRef,
     private modalCreateDepartment: MatBottomSheetRef<CreateDepartmentComponent>) {
     this.departmentForm = this.createDepartmentForm();
   }
 
   ngOnInit(): void {
   }
+
+
 
   createDepartmentForm() {
     return this.fb.group({
@@ -39,14 +44,23 @@ export class CreateDepartmentComponent implements OnInit {
       this.creating = true;
       this.departmentService.create(this.departmentForm.value).subscribe(
         (result) => {
-          console.log(result);
           this.creating = false;
-
+          console.log(result);
+          if (result.success === true) {
+            this.showResponse(result.message);
+            this.departmentForm.reset();
+            this.close();
+          }
+          this.changeDetectorRef.detectChanges();
         },
         (error) => {
-          console.log(error.error.message);
+          console.log(error);
           this.creating = false;
-          console.log(this.creating);
+          if (error.error.success === false) {
+            this.errors = error.error.errors;
+            console.log(this.errors);
+          }
+          this.changeDetectorRef.detectChanges();
         },
       );
     } else {
@@ -54,6 +68,14 @@ export class CreateDepartmentComponent implements OnInit {
     }
   }
 
+  showResponse(message: string) {
+    const config = new MatSnackBarConfig();
+    config.panelClass = ['bg-green-400', 'text-white'];
+    config.verticalPosition = 'top';
+    config.horizontalPosition = 'center';
+    config.duration = 2500;
+    this.snackBar.open(message, 'Ok', config);
+  }
   nameInvalid() {
     if (this.departmentForm.controls.name.invalid &&
       (this.departmentForm.controls.name.dirty ||

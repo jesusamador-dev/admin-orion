@@ -9,12 +9,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [DepartmentsListComponent, CreateDepartmentComponent],
+  declarations: [
+    DepartmentsListComponent,
+    CreateDepartmentComponent
+  ],
   imports: [
     CommonModule,
     DepartmentsRoutingModule,
     MaterialModule,
     ReactiveFormsModule
+  ],
+  entryComponents: [
+    CreateDepartmentComponent
   ]
 })
 export class DepartmentsModule { }

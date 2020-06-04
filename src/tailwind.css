@@ -101,3 +101,11 @@
         transform: scale(1.0);
     }
 }
+
+.mat-simple-snackbar-action {
+    color: white!important;
+}
+
+.mat-simple-snackbar-action button:focus {
+    outline: none;
+}

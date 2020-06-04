@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatRippleModule } from '@angular/material/core';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -36,7 +37,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatFormFieldModule,
     MatStepperModule,
     MatRippleModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatSnackBarModule
   ],
   exports: [
     MatButtonModule,
@@ -53,7 +55,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatFormFieldModule,
     MatStepperModule,
     MatRippleModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }
