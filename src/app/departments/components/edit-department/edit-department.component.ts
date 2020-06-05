@@ -1,16 +1,16 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { DepartmentService } from '../../../core/services/department/department.service';
+import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { DepartmentService } from 'src/app/core/services/department/department.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
+import { CreateDepartmentComponent } from '../create-department/create-department.component';
 
 @Component({
-  selector: 'app-create-department',
-  templateUrl: './create-department.component.html',
-  styleUrls: ['./create-department.component.css']
+  selector: 'app-edit-department',
+  templateUrl: './edit-department.component.html',
+  styleUrls: ['./edit-department.component.css']
 })
-export class CreateDepartmentComponent implements OnInit {
-
+export class EditDepartmentComponent implements OnInit {
   departmentForm: FormGroup;
   creating = false;
   errors: any;
@@ -19,19 +19,19 @@ export class CreateDepartmentComponent implements OnInit {
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
     private changeDetectorRef: ChangeDetectorRef,
-    private modalCreateDepartment: MatBottomSheetRef<CreateDepartmentComponent>) {
+    private modalCreateDepartment: MatBottomSheetRef<CreateDepartmentComponent>,
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {
     this.departmentForm = this.createDepartmentForm();
   }
 
   ngOnInit(): void {
   }
 
-
-
   createDepartmentForm() {
     return this.fb.group({
-      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]),
-      status: new FormControl('1')
+      name: new FormControl(this.data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]),
+      status: new FormControl(this.data.status, [Validators.required]),
+      id: new FormControl(this.data.id)
     });
   }
 
@@ -39,10 +39,10 @@ export class CreateDepartmentComponent implements OnInit {
     this.modalCreateDepartment.dismiss();
   }
 
-  createDepartment(): void {
+  editDepartment(): void {
     if (this.departmentForm.valid) {
       this.creating = true;
-      this.departmentService.create(this.departmentForm.value).subscribe(
+      this.departmentService.edit(this.departmentForm.value).subscribe(
         (result) => {
           this.creating = false;
           if (result.success === true) {

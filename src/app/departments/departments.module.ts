@@ -8,12 +8,14 @@ import { CreateDepartmentComponent } from './components/create-department/create
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteDepartmentComponent } from './components/delete-department/delete-department.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { EditDepartmentComponent } from './components/edit-department/edit-department.component';
 
 @NgModule({
   declarations: [
     DepartmentsListComponent,
     CreateDepartmentComponent,
-    DeleteDepartmentComponent
+    DeleteDepartmentComponent,
+    EditDepartmentComponent
   ],
   imports: [
     CommonModule,

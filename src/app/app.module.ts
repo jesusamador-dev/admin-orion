@@ -12,6 +12,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import localeEsMx from '@angular/common/locales/es-MX';
 import { registerLocaleData } from '@angular/common';
 import { DepartmentsModule } from './departments/departments.module';
+import { MaterialModule } from './material/material.module';
 registerLocaleData(localeEsMx, 'es-Mx');
 
 @NgModule({
@@ -24,6 +25,7 @@ registerLocaleData(localeEsMx, 'es-Mx');
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    MaterialModule,
     AuthModule,
     DepartmentsModule
   ],

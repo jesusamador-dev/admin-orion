@@ -34,7 +34,7 @@ export class AuthService {
   get isLoggedIn(): boolean {
     const token = Cookies.get('token');
     const user = JSON.parse(localStorage.getItem('user'));
-    const session = token !== undefined && user.role ? true : false;
+    const session = token !== undefined && user.role === 'admin' ? true : false;
     return session;
   }
 

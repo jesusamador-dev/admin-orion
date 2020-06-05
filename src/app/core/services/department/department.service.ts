@@ -12,6 +12,7 @@ const apiUrl = environment.api;
 })
 export class DepartmentService {
 
+
   departmentObservable = new BehaviorSubject({});
   constructor(private http: HttpClient) { }
 
@@ -36,6 +37,13 @@ export class DepartmentService {
 
   delete(id: number) {
     return this.http.delete<Department>(`${apiUrl}departments/destroy/${id}`, {})
+      .pipe(
+        tap((res) => this.checkAuthorization)
+      );
+  }
+
+  edit(data: any) {
+    return this.http.put<Department>(`${apiUrl}departments/update/${data.id}`, data)
       .pipe(
         tap((res) => this.checkAuthorization)
       );

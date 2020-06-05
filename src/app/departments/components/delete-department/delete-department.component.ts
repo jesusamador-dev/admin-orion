@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
 import { DepartmentService } from 'src/app/core/services/department/department.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-import { CreateDepartmentComponent } from '../create-department/create-department.component';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { Router } from '@angular/router';
 

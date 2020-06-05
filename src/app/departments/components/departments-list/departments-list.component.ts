@@ -9,6 +9,7 @@ import { DepartmentData } from 'src/app/core/models/deparment-data/department-da
 import { DeleteDepartmentComponent } from '../delete-department/delete-department.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { EditDepartmentComponent } from '../edit-department/edit-department.component';
 
 @Component({
   selector: 'app-departments-list',
@@ -73,6 +74,16 @@ export class DepartmentsListComponent implements OnInit, OnDestroy {
       data: {
         id,
         name
+      }
+    });
+  }
+
+  editDepartment(id: number, name: string, status: string) {
+    this.modalDepartment.open(EditDepartmentComponent, {
+      data: {
+        id,
+        name,
+        status
       }
     });
   }
