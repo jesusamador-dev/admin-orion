@@ -5,8 +5,12 @@
             <li>
                 {{ errors }}
             </li>
+        </ul>
+    </div>
+    <div *ngIf="errors" class="bg-green-100 border-l-4 border-green-500 text-black p-2 mb-2" role="alert">
+        <ul>
             <li>
-                Para volver a iniciar sesión haga click <span (click)="refreshToken()" class="text-white" style="cursor: pointer;">aquí</span>.
+                Para volver a iniciar sesión haga click <span (click)="refreshToken()" class="text-primary" style="cursor: pointer;">aquí</span>.
             </li>
         </ul>
     </div>

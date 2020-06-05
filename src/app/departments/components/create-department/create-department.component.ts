@@ -74,7 +74,7 @@ export class CreateDepartmentComponent implements OnInit {
     config.panelClass = ['bg-green-400', 'text-white'];
     config.verticalPosition = 'top';
     config.horizontalPosition = 'center';
-    config.duration = 2500;
+    config.duration = 250000;
     this.snackBar.open(message, 'Ok', config);
   }
 

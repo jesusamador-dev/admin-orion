@@ -3,7 +3,6 @@ import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Department } from '../../models/department/department.model';
-import { DepartmentData } from '../../models/deparment-data/department-data.model';
 import { BehaviorSubject } from 'rxjs';
 
 const apiUrl = environment.api;
@@ -14,7 +13,6 @@ const apiUrl = environment.api;
 export class DepartmentService {
 
   departmentObservable = new BehaviorSubject({});
-  // public observable = this.departmentObservable.asObservable();
   constructor(private http: HttpClient) { }
 
   next(data: {}) {
@@ -22,7 +20,7 @@ export class DepartmentService {
   }
 
   getAll(status = 'activo') {
-    return this.http.get<Department>(`${apiUrl}departments/get/${status}`)
+    return this.http.get<Department>(`${apiUrl}departments/get`)
       .pipe(
         tap((res) => this.checkAuthorization)
       );
@@ -37,7 +35,7 @@ export class DepartmentService {
   }
 
   delete(id: number) {
-    return this.http.post<Department>(`${apiUrl}departments/destroy/${id}`, {})
+    return this.http.delete<Department>(`${apiUrl}departments/destroy/${id}`, {})
       .pipe(
         tap((res) => this.checkAuthorization)
       );

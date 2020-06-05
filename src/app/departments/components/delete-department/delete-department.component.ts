@@ -44,15 +44,17 @@ export class DeleteDepartmentComponent implements OnInit {
         }
       },
       (error) => {
-        error = error.errors;
+        console.log(error);
+        error = error.error;
         if (error.error_code === 410) {
           this.errors = error.message;
+          this.deleting = false;
+          this.changeDetectorRef.detectChanges();
         }
         if (error.error_code === 411 || error.error_code === 412) {
           this.authService.logOut();
           this.router.navigateByUrl('/login');
         }
-        console.log(error);
       }
     );
   }

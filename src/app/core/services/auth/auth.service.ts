@@ -26,14 +26,15 @@ export class AuthService {
 
   private setSession(authResult: any) {
     Cookies.set('token', authResult.token);
-    localStorage.setItem('user', JSON.stringify(authResult.user));
+    if (authResult.user) {
+      localStorage.setItem('user', JSON.stringify(authResult.user));
+    }
   }
 
   get isLoggedIn(): boolean {
     const token = Cookies.get('token');
     const user = JSON.parse(localStorage.getItem('user'));
-    const session = token !== undefined && user.role === 'admin' ? true : false;
-    console.log(user);
+    const session = token !== undefined && user.role ? true : false;
     return session;
   }
 

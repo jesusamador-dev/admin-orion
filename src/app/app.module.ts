@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
 import { AuthModule } from './auth/auth.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import localeEsMx from '@angular/common/locales/es-MX';
 import { registerLocaleData } from '@angular/common';
+import { DepartmentsModule } from './departments/departments.module';
 registerLocaleData(localeEsMx, 'es-Mx');
 
 @NgModule({
@@ -24,8 +24,8 @@ registerLocaleData(localeEsMx, 'es-Mx');
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    MaterialModule,
-    AuthModule
+    AuthModule,
+    DepartmentsModule
   ],
   providers: [
     {
