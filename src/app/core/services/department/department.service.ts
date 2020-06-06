@@ -11,8 +11,6 @@ const apiUrl = environment.api;
   providedIn: 'root'
 })
 export class DepartmentService {
-
-
   departmentObservable = new BehaviorSubject({});
   constructor(private http: HttpClient) { }
 
