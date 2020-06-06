@@ -9,6 +9,7 @@ import { CreateCategoryComponent } from './components/create-category/create-cat
 import { MaterialModule } from '../material/material.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     CategoriesRoutingModule,
     MaterialModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    ReactiveFormsModule
   ]
 })
 export class CategoriesModule { }

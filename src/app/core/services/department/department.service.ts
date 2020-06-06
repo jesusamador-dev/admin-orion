@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Department } from '../../models/department/department.model';
 import { BehaviorSubject } from 'rxjs';
+import { DepartmentData } from '../../models/deparment-data/department-data.model';
 
 const apiUrl = environment.api;
 
@@ -26,7 +27,7 @@ export class DepartmentService {
   }
 
 
-  create(data: any) {
+  create(data: DepartmentData) {
     return this.http.post<Department>(`${apiUrl}departments/create`, data)
       .pipe(
         tap((res) => this.checkAuthorization)

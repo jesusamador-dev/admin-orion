@@ -80,12 +80,13 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
     });
   }
 
-  editCategory(id: number, name: string, status: string) {
+  editCategory(id: number, name: string, status: string, department: number) {
     this.modalDepartment.open(EditCategoryComponent, {
       data: {
         id,
         name,
-        status
+        status,
+        department
       }
     });
   }

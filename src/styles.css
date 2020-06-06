@@ -13387,6 +13387,14 @@ video {
   outline: none;
 }
 
+.mat-select-arrow-wrapper {
+  visibility: hidden !important;
+}
+
+.mat-select-arrow {
+  visibility: hidden !important;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

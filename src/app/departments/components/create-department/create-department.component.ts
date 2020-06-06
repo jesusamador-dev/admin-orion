@@ -30,7 +30,7 @@ export class CreateDepartmentComponent implements OnInit {
 
   createDepartmentForm() {
     return this.fb.group({
-      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       status: new FormControl('1')
     });
   }
@@ -51,7 +51,6 @@ export class CreateDepartmentComponent implements OnInit {
             this.departmentForm.reset();
             this.close();
           }
-          this.changeDetectorRef.detectChanges();
         },
         (error) => {
           console.log(error);
