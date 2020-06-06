@@ -26,7 +26,7 @@ export class EditCategoryComponent implements OnInit {
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
     private changeDetectorRef: ChangeDetectorRef,
-    private modalCreateCategory: MatBottomSheetRef<CreateCategoryComponent>,
+    private modalCreateCategory: MatBottomSheetRef<EditCategoryComponent>,
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any
   ) {
     this.categoryForm = this.createCategoryForm();

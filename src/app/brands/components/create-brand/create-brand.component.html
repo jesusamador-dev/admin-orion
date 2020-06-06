@@ -1,0 +1,41 @@
+<h3 class="text-lg text-black font-semibold">Creando marca</h3>
+<form [formGroup]="brandForm" (ngSubmit)="createBrand()" class="mt-3">
+    <div *ngIf="errors" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-2 mb-2" role="alert">
+        <ul>
+            <li *ngFor="let item of errors?.name; let i=index">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+    <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600" for="name">Nombre</label>
+        <input type="text" autocomplete="off" formControlName="name" id="name" placeholder="Nombre de la marca" [ngClass]="{'border-red-500': nameInvalid()}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none"
+        />
+        <div *ngIf="nameInvalid()">
+            <p *ngIf="brandForm.controls.name.errors.required" class="text-xs italic text-red-500">El nombre es obligatorio.</p>
+            <p *ngIf="brandForm.controls.name.errors.minlength" class="text-xs italic text-red-500">Se necesitan al menos 2 caracteres.</p>
+            <p *ngIf="brandForm.controls.name.errors.maxlength" class="text-xs italic text-red-500">Máximo 30 caracteres.</p>
+        </div>
+    </div>
+    <div class="mb-6 flex justify-end">
+        <button *ngIf="!creating" class="w-auto px-4 py-2 text-white bg-primary rounded focus:outline-none focus:shadow-outline" type="submit">
+            Crear
+        </button>
+        <div *ngIf="creating" class="flex justify-center items-center w-auto px-4 py-2 text-white bg-primary rounded focus:outline-none focus:shadow-outline">
+            <span class="mr-2">Creando</span>
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
+        <button type="button" (click)="close()" class="w-auto px-4 py-2 ml-2 text-black bg-secondary rounded focus:outline-none focus:shadow-outline">
+            Cerrar
+        </button>
+
+    </div>
+</form>
+<div class="bg-green-400"></div>
