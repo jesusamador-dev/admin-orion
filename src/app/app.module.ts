@@ -13,6 +13,9 @@ import localeEsMx from '@angular/common/locales/es-MX';
 import { registerLocaleData } from '@angular/common';
 import { DepartmentsModule } from './departments/departments.module';
 import { MaterialModule } from './material/material.module';
+import { ProductsModule } from './products/products.module';
+import { BrandsModule } from './brands/brands.module';
+import { CategoriesModule } from './categories/categories.module';
 registerLocaleData(localeEsMx, 'es-Mx');
 
 @NgModule({
@@ -27,7 +30,10 @@ registerLocaleData(localeEsMx, 'es-Mx');
     SharedModule,
     MaterialModule,
     AuthModule,
-    DepartmentsModule
+    DepartmentsModule,
+    CategoriesModule,
+    ProductsModule,
+    BrandsModule
   ],
   providers: [
     {
