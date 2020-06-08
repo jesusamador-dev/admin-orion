@@ -1,0 +1,193 @@
+<h3 class="text-lg text-black font-semibold">Creando producto</h3>
+<form [formGroup]="productForm" (ngSubmit)="createProduct()" enctype="multipart/form-data" class="mt-3">
+    <div *ngIf="errors" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-2 mb-2" role="alert">
+        <ul>
+            <li *ngFor="let item of errors?.name; let i=index">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+
+        <!-- Nombre del producto -->
+        <div class="mb-4 col-span-2">
+            <label class="block mb-2 text-sm text-gray-600" for="name">Nombre</label>
+            <input type="text" autocomplete="off" formControlName="name" id="name" placeholder="Nombre del producto" [ngClass]="{'border-red-500': fieldInvalid('name')}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none"
+            />
+            <div *ngIf="fieldInvalid('name')">
+                <p *ngIf="productForm.controls.name.errors.required" class="text-xs italic text-red-500">El nombre es obligatorio.</p>
+                <p *ngIf="productForm.controls.name.errors.minlength" class="text-xs italic text-red-500">Se necesitan al menos 2 caracteres.</p>
+                <p *ngIf="productForm.controls.name.errors.maxlength" class="text-xs italic text-red-500">Máximo 30 caracteres.</p>
+            </div>
+        </div>
+        <!-- Fin del nombre -->
+        <!-- Precio de compra -->
+        <div class="mb-4">
+            <label class="block mb-2 text-sm text-gray-600" for="unit_price">Precio de compra</label>
+            <input type="text" currencyMask formControlName="unit_price" id="unit_price" placeholder="Precio de compra" [ngClass]="{'border-red-500': fieldInvalid('unit_price')}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none"
+            />
+            <div *ngIf="fieldInvalid('unit_price')">
+                <p *ngIf="productForm.controls.unit_price.errors.required" class="text-xs italic text-red-500">El precio de compra es obligatorio.</p>
+                <p *ngIf="productForm.controls.unit_price.errors.min" class="text-xs italic text-red-500">Se necesitan al menos 1 digítos.</p>
+                <p *ngIf="productForm.controls.unit_price.errors.pattern" class="text-xs italic text-red-500">Usa un formato de moneda válido.</p>
+                <p *ngIf="productForm.controls.unit_price.errors.max" class="text-xs italic text-red-500">Máximo 15 digítos.</p>
+            </div>
+        </div>
+        <!-- /Precio de compra -->
+        <!-- Precio de venta -->
+        <div class="mb-4">
+            <label class="block mb-2 text-sm text-gray-600" for="purchase_price">Precio de venta</label>
+            <input type="text" currencyMask formControlName="purchase_price" id="purchase_price" placeholder="Precio de venta" [ngClass]="{'border-red-500': fieldInvalid('purchase_price')}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none"
+            />
+            <div *ngIf="fieldInvalid('purchase_price')">
+                <p *ngIf="productForm.controls.purchase_price.errors.required" class="text-xs italic text-red-500">El precio de venta es obligatorio.</p>
+                <p *ngIf="productForm.controls.purchase_price.errors.min" class="text-xs italic text-red-500">Se necesitan al menos 1 digítos.</p>
+                <p *ngIf="productForm.controls.purchase_price.errors.pattern" class="text-xs italic text-red-500">Usa un formato de moneda válido.</p>
+                <p *ngIf="productForm.controls.purchase_price.errors.max" class="text-xs italic text-red-500">Máximo 15 digítos.</p>
+            </div>
+        </div>
+        <!-- /precio de venta -->
+        <!-- Cantidad de talla chica -->
+        <div class="mb-4">
+            <label class="block mb-2 text-sm text-gray-600" for="quantity_small_size">Cantidad de talla chica</label>
+            <input type="text" autocomplete="off" formControlName="quantity_small_size" id="quantity_small_size" placeholder="Cantidad en talla chica" [ngClass]="{'border-red-500': fieldInvalid('quantity_small_size')}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none"
+            />
+            <div *ngIf="fieldInvalid('quantity_small_size')">
+                <p *ngIf="productForm.controls.quantity_small_size.errors.required" class="text-xs italic text-red-500">La cantidad de talla chica es obligatoria.</p>
+                <p *ngIf="productForm.controls.quantity_small_size.errors.min" class="text-xs italic text-red-500">Se necesitan al menos 1 digítos.</p>
+                <p *ngIf="productForm.controls.quantity_small_size.errors.pattern" class="text-xs italic text-red-500">Solo permiten números.</p>
+                <p *ngIf="productForm.controls.quantity_small_size.errors.max" class="text-xs italic text-red-500">Máximo 15 digítos.</p>
+            </div>
+        </div>
+        <!-- /Cantidad de talla chica -->
+        <!-- Cantidad de talla mediana -->
+        <div class="mb-4">
+            <label class="block mb-2 text-sm text-gray-600" for="quantity_medium_size">Cantidad de talla mediana</label>
+            <input type="text" autocomplete="off" formControlName="quantity_medium_size" id="quantity_medium_size" placeholder="Cantidad de talla mediana" [ngClass]="{'border-red-500': fieldInvalid('quantity_medium_size')}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none"
+            />
+            <div *ngIf="fieldInvalid('quantity_medium_size')">
+                <p *ngIf="productForm.controls.quantity_medium_size.errors.required" class="text-xs italic text-red-500">La cantidad de talla mediana es obligatoria.</p>
+                <p *ngIf="productForm.controls.quantity_medium_size.errors.min" class="text-xs italic text-red-500">Se necesitan al menos 1 digítos.</p>
+                <p *ngIf="productForm.controls.quantity_medium_size.errors.pattern" class="text-xs italic text-red-500">Solo permiten números.</p>
+                <p *ngIf="productForm.controls.quantity_medium_size.errors.max" class="text-xs italic text-red-500">Máximo 15 digítos.</p>
+            </div>
+        </div>
+        <!-- /cantidad de talla mediana -->
+        <!-- cantidad de talla grande -->
+        <div class="mb-4">
+            <label class="block mb-2 text-sm text-gray-600" for="quantity_big_size">Cantidad de talla grande</label>
+            <input type="text" autocomplete="off" formControlName="quantity_big_size" id="quantity_big_size" placeholder="Cantidad de talla grande" [ngClass]="{'border-red-500': fieldInvalid('quantity_big_size')}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none"
+            />
+            <div *ngIf="fieldInvalid('quantity_big_size')">
+                <p *ngIf="productForm.controls.quantity_big_size.errors.required" class="text-xs italic text-red-500">La cantidad de talla grande es obligatoria.</p>
+                <p *ngIf="productForm.controls.quantity_big_size.errors.min" class="text-xs italic text-red-500">Se necesitan al menos 1 digítos.</p>
+                <p *ngIf="productForm.controls.quantity_big_size.errors.pattern" class="text-xs italic text-red-500">Solo permiten números.</p>
+                <p *ngIf="productForm.controls.quantity_big_size.errors.max" class="text-xs italic text-red-500">Máximo 15 digítos.</p>
+            </div>
+        </div>
+        <!-- /cantidad de talla grande -->
+        <div class="mb-4 ">
+            <label class="block mb-2 text-sm text-gray-600" for="department">Departamento</label>
+            <div class="relative">
+                <mat-select *ngIf="departments" formControlName="department" id="department" brand="department" [ngClass]="{'border-red-500': fieldInvalid('department')}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none">
+                    <div class="sticky top-0 w-full z-10">
+                        <input type="text" (keyup)="filterDepartments($event)" placeholder="Buscar..." class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none">
+                    </div>
+                    <mat-option *ngFor="let department of departments.filteredData" (click)="loadCategories(department.id)" [value]="department.id">{{ department.name }}</mat-option>
+                </mat-select>
+                <div class="pointer pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+            <div *ngIf="fieldInvalid('department')">
+                <p *ngIf="productForm.controls.department.errors.required" class="text-xs italic text-red-500">El departamento es obligatorio.</p>
+            </div>
+        </div>
+
+
+        <div class="mb-4 ">
+            <label class="block mb-2 text-sm text-gray-600" for="category">Categoría</label>
+            <div class="relative">
+                <mat-select *ngIf="categories && categories?.filteredData.length > 0" formControlName="category" id="category" brand="department" [ngClass]="{'border-red-500': fieldInvalid('category')}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none">
+                    <div class="sticky top-0 w-full z-10">
+                        <input type="text" (keyup)="filterCategories($event)" placeholder="Buscar..." class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none">
+                    </div>
+                    <mat-option *ngFor="let category of categories.filteredData" [value]="category.id">{{ category.name }}</mat-option>
+                </mat-select>
+                <div *ngIf="categories && categories?.filteredData.length > 0" class="pointer pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+                <div *ngIf="!categories">
+                    <p class="text-gray-600">Las categorías se mostraran <br> hasta que seleccione un departamento</p>
+                </div>
+                <div *ngIf="categories && categories?.filteredData.length <= 0">
+                    <p class="text-gray-600">Éste departamento no tiene categorías,<br> seleccione otro o agregue categorías.</p>
+                </div>
+            </div>
+            <div *ngIf="fieldInvalid('category')">
+                <p *ngIf="productForm.controls.category.errors.required" class="text-xs italic text-red-500">La categoría es obligatoria.</p>
+            </div>
+        </div>
+
+        <div class="mb-4 ">
+            <label class="block mb-2 text-sm text-gray-600" for="brand">Marca</label>
+            <div class="relative">
+                <mat-select *ngIf="brands" formControlName="brand" id="brand" name="brand" [ngClass]="{'border-red-500': fieldInvalid('brand')}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none">
+                    <div class="sticky top-0 w-full z-10">
+                        <input type="text" (keyup)="filterBrands($event)" placeholder="Buscar..." class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none">
+                    </div>
+                    <mat-option *ngFor="let brand of brands.filteredData" [value]="brand.id">{{ brand.name }}</mat-option>
+                </mat-select>
+                <div class="pointer pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+            <div *ngIf="fieldInvalid('brand')">
+                <p *ngIf="productForm.controls.brand.errors.required" class="text-xs italic text-red-500">La marca es obligatorio.</p>
+            </div>
+        </div>
+
+        <div class="mb-4 ">
+            <label class="block mb-2 text-sm text-gray-600" for="brand">Imagenes</label>
+            <div class="relative flex items-center cursor-pointer">
+                <div class="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none cursor-pointer">
+                    <input formArrayName="images" #fileImage accept=".jpg, .jpeg, .png, .webp" multiple id="images" type="file" (change)="onSelect($event)" class="cursor-pointer opacity-0 z-2">
+                </div>
+                <label (click)="fileImage.click()" class="images-label h-full flex items-center justify-center w-full px-3 text-sm leading-tight text-gray-700 cursor-pointer">
+                 {{ countFiles }}
+                </label>
+            </div>
+
+        </div>
+
+        <div class="mb-4 col-span-2">
+            <label class="block mb-2 text-sm text-gray-600" for="description">Descripción</label>
+            <textarea rows="5" formControlName="description" id="description" placeholder="Descripción" [ngClass]="{'border-red-500': fieldInvalid('description')}" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none">
+            </textarea>
+            <div *ngIf="fieldInvalid('description')">
+                <p *ngIf="productForm.controls.description.errors.required" class="text-xs italic text-red-500">La descripción es obligatoria.</p>
+                <p *ngIf="productForm.controls.description.errors.min" class="text-xs italic text-red-500">Se necesitan al menos 2 caracteres.</p>
+                <p *ngIf="productForm.controls.description.errors.max" class="text-xs italic text-red-500">Máximo 255 caracteres.</p>
+            </div>
+        </div>
+    </div>
+    <div class="mb-6 flex justify-end">
+        <button *ngIf="!creating" class="w-auto px-4 py-2 text-white bg-primary rounded focus:outline-none focus:shadow-outline" type="submit">
+            Crear
+        </button>
+        <div *ngIf="creating" class="flex justify-center items-center w-auto px-4 py-2 text-white bg-primary rounded focus:outline-none focus:shadow-outline">
+            <span class="mr-2">Creando</span>
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
+        <button type="button" (click)="close()" class="w-auto px-4 py-2 ml-2 text-black bg-secondary rounded focus:outline-none focus:shadow-outline">
+            Cerrar
+        </button>
+    </div>
+</form>

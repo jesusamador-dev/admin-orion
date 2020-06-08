@@ -27,6 +27,12 @@ export class BrandService {
     );
   }
 
+  getAllByStatus(status: string) {
+    return this.http.get<Brand>(`${apiUrl}brands/get/${status}`).pipe(
+      tap(res => this.checkAuthorization())
+    );
+  }
+
   create(data: BrandData) {
     return this.http.post<Brand>(`${apiUrl}brands/create`, data).pipe(
       tap(res => this.checkAuthorization())

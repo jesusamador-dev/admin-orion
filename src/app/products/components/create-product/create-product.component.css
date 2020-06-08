@@ -1,0 +1,20 @@
+.images-label {
+    position: absolute;
+}
+
+.images-label::after {
+    content: "Buscar";
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #e9ecef;
+    border: inherit;
+    border-radius: inherit;
+}

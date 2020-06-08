@@ -7,7 +7,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Subject } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { CategoryService } from 'src/app/core/services/category/category.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { takeUntil } from 'rxjs/operators';
 import { ProductService } from '../../../core/services/product/product.service';
@@ -21,7 +20,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
 
   displayedColumns: string[] = [
-    'name', 'department', 'brand', 'category',
+    'name',
     'unit_price', 'purchase_price', 'quantity',
     'status', 'actions'
   ];
@@ -78,11 +77,12 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.modalProduct.open(CreateProductComponent);
   }
 
-  deleteProduct(id: number, name: string) {
+  deleteProduct(id: number, name: string, code: string) {
     this.modalProduct.open(DeleteProductComponent, {
       data: {
         id,
-        name
+        name,
+        code
       }
     });
   }
@@ -91,5 +91,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.modalProduct.open(EditProductComponent, {
       data
     });
+  }
+
+  getQuantity(small: number, medium: number, big: number) {
+    return small + medium + big;
   }
 }

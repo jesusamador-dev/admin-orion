@@ -26,6 +26,8 @@
         "@fortawesome/fontawesome-free": "^5.13.0",
         "@types/js-cookie": "^2.2.6",
         "js-cookie": "^2.2.1",
+        "ngx-currency": "^2.3.3",
+        "ngx-dropzone": "^2.2.2",
         "ngx-skeleton-loader": "^2.2.0",
         "rxjs": "~6.5.4",
         "tslib": "^1.10.0",

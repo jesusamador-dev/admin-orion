@@ -6,6 +6,7 @@ import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { DepartmentData } from '../../../core/models/deparment-data/department-data.model';
 import { DepartmentService } from '../../../core/services/department/department.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { CreateProductComponent } from 'src/app/products/components/create-product/create-product.component';
 
 @Component({
   selector: 'app-create-category',
@@ -20,12 +21,12 @@ export class CreateCategoryComponent implements OnInit {
   departments: MatTableDataSource<DepartmentData>;
 
   constructor(
-    private categoryService: CategoryService,
     private departmentService: DepartmentService,
+    private categoryService: CategoryService,
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
     private changeDetectorRef: ChangeDetectorRef,
-    private modalCreateCategory: MatBottomSheetRef<CreateCategoryComponent>
+    private modalProduct: MatBottomSheetRef<CreateProductComponent>
   ) {
     this.categoryForm = this.createCategoryForm();
   }
@@ -35,14 +36,16 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   close(): void {
-    this.modalCreateCategory.dismiss();
+    this.modalProduct.dismiss();
   }
 
   createCategoryForm() {
     return this.fb.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       status: new FormControl(1, [Validators.required]),
-      department: new FormControl('', Validators.required)
+      department: new FormControl('', Validators.required),
+      brand: new FormControl('', Validators.required),
+      category: new FormControl('', Validators.required),
     });
   }
 

@@ -28,15 +28,15 @@ export class ProductService {
       );
   }
 
-  create(data: ProductData) {
+  create(data: FormData) {
     return this.http.post<Product>(`${apiUrl}products/create`, data)
       .pipe(
         tap((res) => this.checkAuthorization)
       );
   }
 
-  delete(id: number) {
-    return this.http.delete<Product>(`${apiUrl}products/destroy/${id}`)
+  delete(id: number, code: string) {
+    return this.http.delete<Product>(`${apiUrl}products/destroy/${id}/${code}`)
       .pipe(
         tap((res) => this.checkAuthorization)
       );

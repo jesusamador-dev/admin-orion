@@ -1,5 +1,5 @@
 export interface ProductData {
-  id: number;
+  id?: number;
   code: string;
   id_department: number;
   id_category: number;
@@ -13,6 +13,6 @@ export interface ProductData {
   quantity_big_size: number;
   status: string | number;
   discount_price: number;
-  create_at: string;
-  update_at: string;
+  create_at?: string;
+  update_at?: string;
 }

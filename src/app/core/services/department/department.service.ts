@@ -19,13 +19,18 @@ export class DepartmentService {
     this.departmentObservable.next(data);
   }
 
-  getAll(status = 'activo') {
+  getAll() {
     return this.http.get<Department>(`${apiUrl}departments/get`)
       .pipe(
         tap((res) => this.checkAuthorization)
       );
   }
 
+  getAllByStatus(status: string) {
+    return this.http.get<Department>(`${apiUrl}departments/get/${status}`).pipe(
+      tap(res => this.checkAuthorization)
+    );
+  }
 
   create(data: DepartmentData) {
     return this.http.post<Department>(`${apiUrl}departments/create`, data)

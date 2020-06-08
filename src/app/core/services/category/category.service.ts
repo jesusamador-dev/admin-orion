@@ -12,6 +12,7 @@ const apiUrl = environment.api;
   providedIn: 'root'
 })
 export class CategoryService {
+
   categoryObservable = new BehaviorSubject({});
   constructor(private http: HttpClient) { }
 
@@ -19,12 +20,20 @@ export class CategoryService {
     this.categoryObservable.next(data);
   }
 
-  getAll(status = 'activo') {
+  getAll() {
     return this.http.get<Category>(`${apiUrl}categories/get`)
       .pipe(
         tap((res) => this.checkAuthorization)
       );
   }
+
+  getAllByDepartment(id: number, status = null) {
+    return this.http.get<Category>(`${apiUrl}categories/getByDepartment/${id}/${status}`)
+      .pipe(
+        tap((res) => this.checkAuthorization)
+      );
+  }
+
 
   create(data: CategoryData) {
     return this.http.post<Category>(`${apiUrl}categories/create`, data)

@@ -9,7 +9,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { DeleteProductComponent } from './components/delete-product/delete-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
-
+import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
   declarations: [ProductsListComponent, CreateProductComponent, DeleteProductComponent, EditProductComponent],
@@ -18,7 +18,8 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
     ProductsRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    NgxCurrencyModule,
   ]
 })
 export class ProductsModule { }
