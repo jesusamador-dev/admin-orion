@@ -7,6 +7,6 @@ https://adminoriontec.web.app/login
 
 Aquí se puede ver los avances del sistema.
 
-# # # Accesos:
+### Accesos:
 Correo: jesus.macias.amador@gmail.com
 Contraseña: 12345678
